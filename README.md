@@ -22,6 +22,7 @@ deploy(
     useSSL: true,
   },
   'test_bucket_name',
+  'prefix',
 );
 ```
 

@@ -8,14 +8,15 @@ import mime from 'mime';
  * @param {string} folterPath - Folder path with files for upload
  * @param {Minio.ClientOptions} config - Minio config checkout Minio.ClientsOptions
  * @param {string} bucketName - Bucket name where files upload
- *
+ * @param {string} prefix - Prefix where files will be upload (optional)
+ * 
  */
 
-export async function deploy(folderPath: string, config: Minio.ClientOptions, bucketName: string) {
+export async function deploy(folderPath: string, config: Minio.ClientOptions, bucketName: string, prefix?: string) {
   const minioClient = new Minio.Client(config);
 
   const data: any = []
-  const stream = minioClient.listObjects(bucketName, '', true)
+  const stream = minioClient.listObjects(bucketName, prefix ?? '', true)
 
   function upload(path: string) {
     const directory = fs.readdirSync(path, { withFileTypes: true })
@@ -28,7 +29,7 @@ export async function deploy(folderPath: string, config: Minio.ClientOptions, bu
           if (err) {
             throw err;
           }
-          let trimRoot = path.replace(`${folderPath}`, '');
+          let trimRoot = path.replace(`${folderPath}`, prefix ? `/${prefix}` : '');
           trimRoot = (trimRoot === '' ? trimRoot : `${trimRoot}/`).substring(1);
 
           const splittedFileName = object.name.split('.');
