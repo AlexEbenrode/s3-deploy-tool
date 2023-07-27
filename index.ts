@@ -1,6 +1,15 @@
-import Minio from 'minio';
+import * as Minio from 'minio';
 import fs from 'fs';
 import mime from 'mime';
+
+/**
+ * Get all files from folder and upload to s3 bucket via minio
+ *
+ * @param {string} folterPath - Folder path with files for upload
+ * @param {Minio.ClientOptions} config - Minio config checkout Minio.ClientsOptions
+ * @param {string} bucketName - Bucket name where files upload
+ *
+ */
 
 export async function deploy(folderPath: string, config: Minio.ClientOptions, bucketName: string) {
   const minioClient = new Minio.Client(config);
@@ -28,7 +37,7 @@ export async function deploy(folderPath: string, config: Minio.ClientOptions, bu
           const metaData = {
             'Content-Type': contentType,
           };
-          await minioClient.putObject(bucketName, `${trimRoot}${object.name}`, fileStream, stats.size, metaData, (err, objInfo) => {
+          await minioClient.putObject(bucketName, `${trimRoot}${object.name}`, fileStream, stats.size, metaData, (err) => {
             if (err) {
               throw err;
             }
