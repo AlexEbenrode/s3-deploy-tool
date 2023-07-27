@@ -26,4 +26,4 @@ deploy(
 );
 ```
 
-deploy() will delete all files from bucket and load files from specified folder
+deploy() will delete all files from bucket or folder if prefix provided and load files from specified folder
