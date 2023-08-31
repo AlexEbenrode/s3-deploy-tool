@@ -19,15 +19,16 @@ function showHelpInfo() {
 }
 
 function main() {
+  let path = '';
+  let ssl = true;
+  let bucket;
+  let prefix;
+  let endpoint;
+  let key;
+  let secret;
+  let port;
   for (const [index, value] of args.entries()) {
-    let path = '';
-    let ssl = true;
-    let bucket;
-    let prefix;
-    let endpoint;
-    let key;
-    let secret;
-    let port;
+    
     switch(value) {
       case '--help':
         showHelpInfo();
@@ -57,8 +58,9 @@ function main() {
         prefix = args[index + 1];
         break;
     }
-  
-    if(!endpoint) 
+  }
+
+  if(!endpoint) 
       console.error('--endpoint is required');
     else if(!key) 
       console.error('--key is required');
@@ -81,7 +83,6 @@ function main() {
         console.error(error);
       }
     }
-  }
 }
 
 main();

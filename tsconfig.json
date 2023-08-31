@@ -6,6 +6,7 @@
     "target": "es2017",
     "moduleResolution": "node",
     "allowJs": true,
+    "module": "node16",
     "alwaysStrict": true,
     "checkJs": true,
     "declaration": true,
@@ -14,13 +15,11 @@
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
     "isolatedModules": true,
-    "noEmit": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
-    "rootDir": ".",
     "outDir": "dist",
     "skipLibCheck": true,
     "sourceMap": true,
@@ -31,9 +30,9 @@
     "strictPropertyInitialization": true,
   },
   "include": [
+    "src/**/*",
     "index.ts",
-    "cli.ts",
-    "./src",
+    "cli.ts"
   ],
   "exclude": [
     "node_modules",

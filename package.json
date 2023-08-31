@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf ./dist && tsc index.ts cli.ts --outDir dist --esModuleInterop --allowSyntheticDefaultImports --declaration --target 'es2017' --moduleResolution 'node'"
+    "build": "rm -rf ./dist && tsc -p tsconfig.json"
   },
   "bin": "dist/cli.js",
   "repository": {
