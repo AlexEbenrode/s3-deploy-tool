@@ -38,6 +38,7 @@ npx s3-deploy-tool --path path/to/folder --endpoint example.com --key ******** -
 
 Full args list
 
+```
 --help: show all args in console
 --path: folder path with files for upload
 --bucket: bucket name where files upload
@@ -47,3 +48,4 @@ Full args list
 --secret specify secret key for s3 bucket
 --port: specify port for s3 bucket, default 80 or 443
 --disable-ssl: disable secure access 
+```
