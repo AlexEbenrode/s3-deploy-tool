@@ -1,13 +1,14 @@
 {
   "name": "s3-deploy-tool",
-  "version": "0.1.3",
+  "version": "0.1.34",
   "description": "Simple tool for deploy static files for web site to s3 buckets",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf ./dist && tsc index.ts --outDir dist --esModuleInterop --declaration"
+    "build": "rm -rf ./dist && tsc index.ts cli.ts --outDir dist --esModuleInterop --allowSyntheticDefaultImports --declaration --target 'es2017' --moduleResolution 'node'"
   },
+  "bin": "dist/cli.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AlexEbenrode/s3-deploy-tool.git"
